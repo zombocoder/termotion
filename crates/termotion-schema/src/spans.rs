@@ -36,10 +36,9 @@ impl SpanIndex {
             if let Some(pos) = self.lookup(&candidate) {
                 return Some(pos);
             }
-            match candidate.rfind(['.', '[']) {
-                Some(cut) => candidate.truncate(cut),
-                None => return None,
-            }
+            // No separator left means we have run out of ancestors to try.
+            let cut = candidate.rfind(['.', '['])?;
+            candidate.truncate(cut);
         }
     }
 

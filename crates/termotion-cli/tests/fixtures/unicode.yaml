@@ -1,3 +1,21 @@
+# Golden-image fixture for non-ASCII rendering.
+#
+# IMPORTANT: this fixture may only use glyphs present in the EMBEDDED font
+# (assets/fonts/JetBrainsMono-Regular.ttf). Golden images are compared
+# byte-for-byte across macOS, Linux, and Windows, and any glyph the embedded
+# face lacks is supplied by whatever system fallback font the runner happens to
+# have — which differs per platform and makes the comparison unstable by
+# construction.
+#
+# This is why there is no CJK here. U+4E16/U+754C are not in JetBrains Mono, so
+# they previously resolved to Hiragino on macOS, Noto CJK on Ubuntu, and a
+# different face again on Windows, producing three different images from the
+# same scenario. Wide-character LAYOUT (a 2-cell glyph plus its zero-width
+# continuation) is covered without pixels by the core tests
+# `wide_glyphs_take_two_cells_with_a_zero_width_continuation` and
+# `wide_glyph_with_exactly_one_column_left_wraps_instead_of_splitting`.
+#
+# Before adding a character here, confirm the embedded font contains it.
 version: 1
 metadata:
   name: unicode
@@ -16,6 +34,9 @@ terminal:
 font:
   size: 20
 timeline:
+  # Latin accents (precomposed and combining), Greek, Cyrillic, an arrow,
+  # all four shade levels, box drawing, and a check mark — every one of which
+  # ships in the embedded face.
   - type: write
-    text: "héllo 世界 ▓░"
+    text: "héllo ñ ß Ω π Я → █▓▒░ ─│┌┘ ✓"
     speed: 0ms

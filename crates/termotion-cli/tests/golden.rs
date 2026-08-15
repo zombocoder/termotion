@@ -4,6 +4,14 @@
 //!     TERMOTION_UPDATE_GOLDEN=1 cargo test -p termotion-cli --test golden
 //! Review the resulting image diff before committing — a golden that captures a
 //! bug becomes the permanent reference for correct output.
+//!
+//! CROSS-PLATFORM CONSTRAINT: these images are compared byte-for-byte on macOS,
+//! Linux, and Windows. That only holds because rasterization is pure Rust, cell
+//! positions are integers, and the default face is embedded in the binary — so
+//! fixtures may only use glyphs the EMBEDDED font actually contains. A glyph it
+//! lacks is supplied by the runner's system fallback font, which differs per
+//! platform and makes the comparison fail by construction rather than because
+//! anything regressed. See `fixtures/unicode.yaml` for the worked example.
 
 use std::fs;
 use std::path::PathBuf;

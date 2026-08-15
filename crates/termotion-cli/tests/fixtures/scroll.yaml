@@ -1,0 +1,48 @@
+version: 1
+metadata:
+  name: scroll
+canvas:
+  width: 300
+  height: 170
+  fps: 10
+  background: "#080B09"
+theme:
+  ref: zombocoder
+terminal:
+  x: 0
+  y: 0
+  width: 300
+  height: 170
+font:
+  size: 20
+timeline:
+  - type: write_line
+    text: "line 01"
+    speed: 100ms
+  - type: write_line
+    text: "line 02"
+    speed: 100ms
+  - type: write_line
+    text: "line 03"
+    speed: 100ms
+  - type: write_line
+    text: "line 04"
+    speed: 100ms
+  - type: write_line
+    text: "line 05"
+    speed: 100ms
+  - type: write_line
+    text: "line 06"
+    speed: 100ms
+  - type: write_line
+    text: "line 07"
+    speed: 100ms
+  - type: write_line
+    text: "line 08"
+    speed: 100ms
+  - type: write_line
+    text: "line 09"
+    speed: 100ms
+  - type: write_line
+    text: "line 10"
+    speed: 100ms

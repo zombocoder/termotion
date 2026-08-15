@@ -1,0 +1,75 @@
+version: 1
+
+metadata:
+  name: brb
+  description: BRB animation
+
+canvas:
+  width: 1920
+  height: 1080
+  fps: 30
+  background: "#080B09"
+
+theme:
+  ref: zombocoder
+
+terminal:
+  x: 110
+  y: 110
+  width: 1700
+  height: 860
+
+prompt:
+  user: zombocoder
+  host: twitch
+  path: "~"
+  symbol: "$"
+
+cursor:
+  style: block
+  blink: 500ms
+
+timeline:
+  - type: command
+    text: "./brb"
+    speed: 45ms
+
+  - type: pause
+    duration: 500ms
+
+  - type: newline
+
+  - type: write_line
+    text: "Session suspended."
+    speed: 35ms
+
+  - type: newline
+
+  - type: write_line
+    text: "Reason:"
+    speed: 35ms
+
+  - type: write_line
+    text: "> coffee"
+    speed: 60ms
+
+  - type: newline
+
+  - type: write
+    text: "Process will resume shortly..."
+    speed: 35ms
+
+  - type: pause
+    duration: 6s
+
+  - type: cursor
+    visible: true
+    duration: 3s
+
+playback:
+  loop: true
+  loop_delay: 1s
+
+output:
+  format: webm
+  codec: vp9

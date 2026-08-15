@@ -1,0 +1,21 @@
+version: 1
+metadata:
+  name: unicode
+canvas:
+  width: 480
+  height: 120
+  fps: 10
+  background: "#080B09"
+theme:
+  ref: zombocoder
+terminal:
+  x: 0
+  y: 0
+  width: 480
+  height: 120
+font:
+  size: 20
+timeline:
+  - type: write
+    text: "héllo 世界 ▓░"
+    speed: 0ms

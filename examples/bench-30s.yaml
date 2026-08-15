@@ -1,0 +1,33 @@
+version: 1
+metadata:
+  name: bench-30s
+canvas:
+  width: 1920
+  height: 1080
+  fps: 30
+  background: "#080B09"
+theme:
+  ref: zombocoder
+terminal:
+  x: 110
+  y: 110
+  width: 1700
+  height: 860
+font:
+  size: 40
+timeline:
+  - type: write_line
+    text: "Initializing stream services and warming up every subsystem now"
+    speed: 35ms
+  - type: write_line
+    text: "Checking camera, audio, network, encoder, and operator presence"
+    speed: 35ms
+  - type: write_line
+    text: "All subsystems nominal; holding for the operator to come online"
+    speed: 35ms
+  - type: write_line
+    text: "Standing by with a blinking cursor until the stream goes live"
+    speed: 35ms
+  - type: cursor
+    visible: true
+    duration: 21.25s

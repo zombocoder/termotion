@@ -1,0 +1,10 @@
+[package]
+name = "termotion-encode"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+png = "0.18.1"
+termotion-core = { path = "../termotion-core" }
+thiserror.workspace = true

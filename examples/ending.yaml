@@ -1,0 +1,67 @@
+version: 1
+metadata:
+  name: ending
+  description: Ending screen shown when the stream wraps up
+canvas:
+  width: 1920
+  height: 1080
+  fps: 30
+  background: "#080B09"
+theme:
+  ref: zombocoder
+terminal:
+  x: 110
+  y: 110
+  width: 1700
+  height: 860
+prompt:
+  user: zombocoder
+  host: twitch
+  path: "~"
+  symbol: "$"
+cursor:
+  style: block
+  blink: 500ms
+timeline:
+  # The `command` action below only renders "shutdown -h now" as text —
+  # Termotion never executes the commands it draws. This is a core safety
+  # property of the project (see README's Safety section).
+  - type: command
+    text: "shutdown -h now"
+    speed: 45ms
+  - type: pause
+    duration: 700ms
+  - type: newline
+
+  - type: write_line
+    text: "Stopping stream services..."
+    speed: 35ms
+  - type: pause
+    duration: 600ms
+  - type: write_line
+    text: "Saving session..."
+    speed: 35ms
+  - type: pause
+    duration: 600ms
+  - type: write_line
+    text: "Closing connections..."
+    speed: 35ms
+  - type: pause
+    duration: 900ms
+  - type: newline
+
+  - type: write_line
+    text: "Thanks for watching."
+    speed: 45ms
+  - type: newline
+
+  # dimmed, the way a real terminal's last line reads
+  - type: set_color
+    foreground: muted
+  - type: write
+    text: "Connection closed."
+    speed: 35ms
+  - type: reset_style
+  - type: cursor
+    visible: true
+    duration: 6s

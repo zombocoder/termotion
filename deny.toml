@@ -1,0 +1,25 @@
+[advisories]
+yanked = "deny"
+# RUSTSEC-2026-0192: `ttf-parser` is unmaintained. It is pulled in transitively
+# via fontdb 0.23 <- cosmic-text 0.19 <- termotion-render; there is no newer
+# fontdb release compatible with our pinned cosmic-text, and the advisory
+# itself states no safe upgrade exists. Not a vulnerability, not a license
+# issue — tracked here so `cargo deny check` stays actionable rather than
+# permanently red on an issue we cannot fix from this repo.
+ignore = ["RUSTSEC-2026-0192"]
+
+[licenses]
+allow = [
+    "Apache-2.0",
+    "MIT",
+    "BSD-2-Clause",
+    "BSD-3-Clause",
+    "ISC",
+    "Unicode-3.0",
+    "Zlib",
+    "MPL-2.0",
+    "OFL-1.1",
+]
+
+[bans]
+multiple-versions = "warn"

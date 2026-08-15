@@ -1,0 +1,13 @@
+[package]
+name = "termotion-timeline"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+rand = "0.10.2"
+rand_chacha = "0.10.0"
+smol_str = "0.3.6"
+termotion-core = { path = "../termotion-core" }
+termotion-schema = { path = "../termotion-schema" }
+unicode-segmentation = "1.13.3"

@@ -1,0 +1,12 @@
+[package]
+name = "termotion-schema"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+marked-yaml = "0.8.0"
+serde = { version = "1.0.229", features = ["derive"] }
+serde_yaml_ng = "0.10.0"
+termotion-core = { path = "../termotion-core" }
+thiserror.workspace = true

@@ -1,0 +1,136 @@
+version: 1
+metadata:
+  name: starting-soon
+  description: Starting Soon screen with service checks
+canvas:
+  width: 1920
+  height: 1080
+  fps: 30
+  background: "#080B09"
+theme:
+  ref: zombocoder
+terminal:
+  x: 110
+  y: 110
+  width: 1700
+  height: 860
+prompt:
+  user: zombocoder
+  host: twitch
+  path: "~"
+  symbol: "$"
+cursor:
+  style: block
+  blink: 500ms
+# Each status row below is written as "[ .. ]", paused, then backspaced and
+# rewritten as "[ OK ]" in place. This simulates a live status flip by hand
+# because the `status`/`status_update` actions are a later milestone and do
+# not exist yet. Once they land, this scene should be rewritten to use them
+# instead of the write/backspace/write sequences.
+timeline:
+  - type: command
+    text: "./stream --start"
+    speed: 45ms
+  - type: pause
+    duration: 700ms
+  - type: newline
+  - type: write_line
+    text: "Initializing stream services..."
+    speed: 35ms
+  - type: newline
+
+  # camera: pending, then flips to OK in place
+  - type: set_color
+    foreground: warning
+  - type: write
+    text: "[ .. ]"
+  - type: reset_style
+  - type: write
+    text: " camera"
+  - type: pause
+    duration: 700ms
+  - type: backspace
+    count: 13
+  - type: set_color
+    foreground: success
+  - type: write
+    text: "[ OK ]"
+  - type: reset_style
+  - type: write_line
+    text: " camera"
+
+  # audio: pending, then flips to OK in place
+  - type: set_color
+    foreground: warning
+  - type: write
+    text: "[ .. ]"
+  - type: reset_style
+  - type: write
+    text: " audio"
+  - type: pause
+    duration: 500ms
+  - type: backspace
+    count: 12
+  - type: set_color
+    foreground: success
+  - type: write
+    text: "[ OK ]"
+  - type: reset_style
+  - type: write_line
+    text: " audio"
+
+  # twitch: pending, then flips to OK in place
+  - type: set_color
+    foreground: warning
+  - type: write
+    text: "[ .. ]"
+  - type: reset_style
+  - type: write
+    text: " twitch"
+  - type: pause
+    duration: 900ms
+  - type: backspace
+    count: 13
+  - type: set_color
+    foreground: success
+  - type: write
+    text: "[ OK ]"
+  - type: reset_style
+  - type: write_line
+    text: " twitch"
+
+  # network: pending, then flips to OK in place
+  - type: set_color
+    foreground: warning
+  - type: write
+    text: "[ .. ]"
+  - type: reset_style
+  - type: write
+    text: " network"
+  - type: pause
+    duration: 600ms
+  - type: backspace
+    count: 14
+  - type: set_color
+    foreground: success
+  - type: write
+    text: "[ OK ]"
+  - type: reset_style
+  - type: write_line
+    text: " network"
+
+  # operator stays pending — this is what the stream is waiting on
+  - type: set_color
+    foreground: warning
+  - type: write
+    text: "[ .. ]"
+  - type: reset_style
+  - type: write_line
+    text: " operator"
+  - type: newline
+  - type: write
+    text: "Waiting for operator"
+    speed: 35ms
+  - type: cursor
+    visible: true
+    duration: 6s
